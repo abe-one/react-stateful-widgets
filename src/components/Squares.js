@@ -64,7 +64,7 @@ export default function Squares() {
               id={id}
               key={id}
               className={`square ${getClassName(id)}`}
-              // Was the missing space a typo, or a test? Or was it my typo? mmmmm
+              // Was the missing space a typo, or a test? Mmmmmm
               onClick={() => markActive(id)}
             ></div>
           ))
