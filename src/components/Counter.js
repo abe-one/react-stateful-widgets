@@ -62,21 +62,27 @@ export default function Counter() {
     setCount(0);
   };
 
-  const isEven = (even, odd) => {
-    count % 2 === 0 ? even : odd;
+  const isEven = function (even, odd) {
+    if (count % 2 === 0) {
+      return even;
+    } else {
+      return odd;
+    }
   }; //Step DRYer
 
   const style = {
     fontSize: "1.5em",
     marginBottom: "0.3em",
-    color: count % 2 === 0 ? "royalblue" : "crimson",
+    // color: count % 2 === 0 ? "royalblue" : "crimson",
+    color: isEven("royalblue", "crimson"),
   };
 
   return (
     <div className="widget-counter container">
       <h2>Counter</h2>
       <div id="count" style={style}>
-        Number {count} is {count % 2 === 0 ? "even" : "odd"}
+        Number {count} is {/*count % 2 === 0 ? "even" : "odd"*/}
+        {isEven("even", "odd")}
       </div>
       <div>
         <button id="increment" onClick={increment}>
