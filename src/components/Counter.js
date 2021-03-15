@@ -40,38 +40,43 @@ STEP 4:
 
 STEP 5:
   This click handler needs to use 'setCount' to set the 'count' to be the current 'count' minus one.
-  Do NOT do count--. That amounts to trying to mutate 'count' in place. This is the road to perdition.
+  Do NOT do count--. That amounts to trying to mutate 'count' in place. This is the road to perdition. :O :D
 
 STEP 6:
   This click handler needs to use 'setCount' to set the 'count' to be zero again.
 */
 
-import React, { useState } from "react"; /* STEP 0 */
+import React, { useState } from "react";
 
 export default function Counter() {
-  /* STEP 1 */
+  const [count, setCount] = useState(0);
 
   const increment = () => {
-    /* STEP 4 */
+    setCount(count + 1);
   };
   const decrement = () => {
-    /* STEP 5 */
+    setCount(count - 1);
   };
+
   const reset = () => {
-    /* STEP 6 */
+    setCount(0);
   };
+
+  const isEven = (even, odd) => {
+    count % 2 === 0 ? even : odd;
+  }; //Step DRYer
 
   const style = {
     fontSize: "1.5em",
     marginBottom: "0.3em",
-    color: "royalblue" /* STEP 2 */,
+    color: count % 2 === 0 ? "royalblue" : "crimson",
   };
 
   return (
     <div className="widget-counter container">
       <h2>Counter</h2>
       <div id="count" style={style}>
-        Number 0 is even {/* STEP 3 */}
+        Number {count} is {count % 2 === 0 ? "even" : "odd"}
       </div>
       <div>
         <button id="increment" onClick={increment}>
